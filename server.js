@@ -24,8 +24,14 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use('/public', express.static(process.cwd() + '/public'));
 
 var urlSchema = new mongoose.Schema({
-  originalURL: String,
-    shortURL: String
+  originalURL: {
+    type: String,
+    unique: true
+  },
+  shortURL: {
+    type: String,
+    unique: true
+  }
 });
 
 var URL = mongoose.model('URL', urlSchema);
@@ -37,7 +43,7 @@ app.get('/', function(req, res){
 
   
 // your first API endpoint... 
-app.post("/api/hello", function (req, res, next) {
+app.post("/api/shorturl/new", function (req, res, next) {
   res.json({
     originalURL: 'hello API',
     shortURL: 'hi API'

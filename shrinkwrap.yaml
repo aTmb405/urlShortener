@@ -6,6 +6,8 @@ dependencies:
   express: 5.0.0-alpha.7
   mongodb: 3.2.6
   mongoose: 5.5.12
+  shortid: 2.2.14
+  valid-url: 1.0.9
 packages:
   /accepts/1.0.7:
     dependencies:
@@ -878,6 +880,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-DfGTXKsVNpB17xYK0olBB6oU3C0=
+  /nanoid/2.0.3:
+    dev: false
+    resolution:
+      integrity: sha512-NbaoqdhIYmY6FXDRB4eYtDVC9Z9eCbn8TyaiC16LNKtpPv/aqa0tOPD8y6gNE4yUNnaZ7LLhYtXOev/6+cBtfw==
   /native-dns-cache/0.0.2:
     dependencies:
       binaryheap: 0.0.3
@@ -1229,6 +1235,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-JvdAWfbXeIGaZ9cILp38HntZSFSo3mWg6xGcJJsd+d4aRMOqauag1C63dJfDw7OaMYwEbHMOxEZ1lqVRYP2OAw==
+  /shortid/2.2.14:
+    dependencies:
+      nanoid: 2.0.3
+    dev: false
+    resolution:
+      integrity: sha512-4UnZgr9gDdA1kaKj/38IiudfC3KHKhDc1zi/HSxd9FQDR0VLwH3/y79tZJLsVYPsJgIjeHjqIWaWVRJUj9qZOQ==
   /sift/7.0.1:
     dev: false
     resolution:
@@ -1400,6 +1412,10 @@ packages:
       node: '>= 0.4.0'
     resolution:
       integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  /valid-url/1.0.9:
+    dev: false
+    resolution:
+      integrity: sha1-HBRHm0DxOXp1eC8RXkCGRHQzogA=
   /vary/0.1.0:
     dev: false
     engines:
@@ -1461,6 +1477,7 @@ packages:
       node: '>=0.4.0'
     name: xmlhttprequest
     resolution:
+      registry: 'https://registry.npmjs.org/'
       tarball: 'https://github.com/LearnBoost/node-XMLHttpRequest/archive/0f36d0b5ebc03d85f860d42a64ae9791e1daa433.tar.gz'
     version: 1.5.0
   github.com/component/emitter/archive/1.0.1.tar.gz:
@@ -1469,12 +1486,14 @@ packages:
     dev: false
     name: emitter
     resolution:
+      registry: 'https://registry.npmjs.org/'
       tarball: 'http://github.com/component/emitter/archive/1.0.1.tar.gz'
     version: 1.0.1
   github.com/component/global/archive/v2.0.1.tar.gz:
     dev: false
     name: global
     resolution:
+      registry: 'https://registry.npmjs.org/'
       tarball: 'https://github.com/component/global/archive/v2.0.1.tar.gz'
     version: 2.0.1
 registry: 'https://registry.npmjs.org/'
@@ -1488,3 +1507,5 @@ specifiers:
   express: ^5.0.0-alpha.2
   mongodb: ^3.2.6
   mongoose: ^5.5.12
+  shortid: ^2.2.14
+  valid-url: ^1.0.9

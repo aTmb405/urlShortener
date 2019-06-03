@@ -5,6 +5,8 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var dns = require('dns');
+var shortid = require('shortid');
+var validUrl = require('valid-url');
 
 var cors = require('cors');
 
@@ -46,7 +48,7 @@ app.get('/', function(req, res){
 app.post("/api/shorturl/new", function (req, res, next) {
   res.json({
     originalURL: 'hello API',
-    shortURL: 'hi API'
+    shortURL: shortid.generate
   });
 }, function (req, res) {
   

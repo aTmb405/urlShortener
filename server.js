@@ -43,11 +43,24 @@ app.get('/', function(req, res){
   res.sendFile(process.cwd() + '/views/index.html');
 });
 
+app.get("/api/shorturl/:shortURL", function(req, res) {
+  URL.findOne({shortURL: req.params.shortURL}, function(err, url) {
+    if(err) {
+      console.log(err);
+    } else {
+      // RENDER SHOW TEMPLATE WITH THAT CAMPGROUND
+      res.render(`{originalURL: url}`);
+    }
+  });
+  
+});
+
   
 // your first API endpoint... 
 app.post("/api/shorturl/new", function (req, res, next) {
   var url = req.body.url;
-  var newUrl = {originalUrl: url, shortUrl: shortid.generate};
+  var short = shortid.generate;
+  var newUrl = {originalURL: url, shortURL: short};
   URL.create(newUrl, function(err, newlyCreated){
         if(err){
             console.log(err);
@@ -55,11 +68,7 @@ app.post("/api/shorturl/new", function (req, res, next) {
             console.log(newlyCreated);
         }
   });
-}, function (req, res) {
-  res.json({
-    originalURL: req.body.url,
-    shortURL: shortid.generate
-  });
+  res.json(newUrl);
 });
 
 

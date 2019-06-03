@@ -48,9 +48,8 @@ app.get("/api/shorturl/:shortURL", function(req, res) {
     if(err) {
       console.log(err);
     } else {
-      // RENDER SHOW TEMPLATE WITH THAT CAMPGROUND
-      res.redirect(`{originalURL: url}`);
-      console.log(url.originalURL)
+      console.log("Redirecting to " + url.originalURL)
+      res.redirect(url.originalURL);
     }
   });
   
@@ -62,14 +61,21 @@ app.post("/api/shorturl/new", function (req, res, next) {
   var url = req.body.url;
   var short = shortid.generate();
   var newUrl = {originalURL: url, shortURL: short};
-  URL.create(newUrl, function(err, newlyCreated){
-        if(err){
-            console.log(err);
-        } else {
-            console.log(newlyCreated);
-        }
-  });
-  res.json(newUrl);
+  
+  if (validUrl.isUri(url)){
+    URL.create(newUrl, function(err, newlyCreated){
+      if(err){
+          console.log(err);
+      } else {
+          console.log(newlyCreated);
+      }
+    });
+    res.json(newUrl);
+  } else {
+        console.log('Not a URI');
+  }
+  
+  
 });
 
 

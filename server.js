@@ -58,7 +58,11 @@ app.get("/api/shorturl/:shortURL", function(req, res) {
   
 // your first API endpoint... 
 app.post("/api/shorturl/new", function (req, res, next) {
-  var url = req.body.url;
+  if (!req.body.url.includes("http")) {
+    var url = "http://" + req.body.url
+  } else {
+    var url = req.body.url;
+  }
   var short = shortid.generate();
   var newUrl = {originalURL: url, shortURL: short};
   
@@ -72,10 +76,8 @@ app.post("/api/shorturl/new", function (req, res, next) {
     });
     res.json(newUrl);
   } else {
-        console.log('Not a URI');
+    res.json({isURL: "NO"});
   }
-  
-  
 });
 
 

@@ -49,7 +49,8 @@ app.get("/api/shorturl/:shortURL", function(req, res) {
       console.log(err);
     } else {
       // RENDER SHOW TEMPLATE WITH THAT CAMPGROUND
-      res.render(`{originalURL: url}`);
+      res.redirect(`{originalURL: url}`);
+      console.log(url.originalURL)
     }
   });
   
@@ -59,7 +60,7 @@ app.get("/api/shorturl/:shortURL", function(req, res) {
 // your first API endpoint... 
 app.post("/api/shorturl/new", function (req, res, next) {
   var url = req.body.url;
-  var short = shortid.generate;
+  var short = shortid.generate();
   var newUrl = {originalURL: url, shortURL: short};
   URL.create(newUrl, function(err, newlyCreated){
         if(err){

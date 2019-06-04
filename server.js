@@ -51,7 +51,6 @@ app.get("/api/shorturl/:shortURL", function(req, res) {
       res.redirect(url.originalURL);
     }
   });
-  
 });
 
   
